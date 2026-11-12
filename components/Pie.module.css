@@ -1,0 +1,55 @@
+.pie {
+  background: var(--superficie);
+  border-top: 1px solid rgb(0 0 0 / 0.06);
+  /* Espacio para que la barra flotante no tape el pie. */
+  padding: 48px 0 calc(112px + env(safe-area-inset-bottom, 0px));
+  font-size: 0.875rem;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+  color: var(--texto-3);
+  line-height: 1.6;
+  font-size: 0.8125rem;
+}
+
+.marca img {
+  height: 48px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.marca address {
+  font-style: normal;
+}
+
+.columnas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.columnas h2 {
+  margin-bottom: 4px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--texto-3);
+}
+
+/* Enlaces del pie con altura táctil de 44 px. */
+.columnas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 500;
+}

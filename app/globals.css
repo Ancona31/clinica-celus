@@ -1,0 +1,277 @@
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --azul: #0050aa;
+  --azul-marino: #144682;
+  --gris: #969696; /* solo decorativo: 2.9:1 sobre blanco */
+  --gris-claro: #bebebe; /* solo decorativo */
+  --fondo: #f5f5f7;
+  --superficie: #ffffff;
+  --texto: #1d1d1f;
+  --texto-2: #48484a;
+  --texto-3: #6e6e73; /* 4.7:1 sobre --fondo */
+  --placeholder: #e4e8ee;
+  --placeholder-texto: #55606e;
+  --verde: #34c759;
+  --verde-texto: #1e7a3a;
+  --verde-fondo: #e3f5e8;
+
+  --radio-s: 14px;
+  --radio-m: 22px;
+  --radio-l: 28px;
+  --radio-xl: 32px;
+  --sombra-s: 0 1px 2px rgb(0 0 0 / 0.06);
+  --sombra-flotante: 0 12px 36px rgb(0 0 0 / 0.16);
+
+  --ancho: 1180px;
+  --margen: 16px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --alto-barra: 64px;
+  color-scheme: light;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --margen: 24px;
+  }
+}
+
+/* ── Base ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--alto-barra) + 16px);
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--azul);
+  text-decoration: none;
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saltar {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 100;
+  background: var(--azul);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.saltar:focus {
+  top: calc(12px + env(safe-area-inset-top, 0px));
+}
+
+/* ── Estructura ─────────────────────────────────────────────────────── */
+.contenedor {
+  max-width: calc(var(--ancho) + 2 * var(--margen));
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+.seccion {
+  padding-block: 72px;
+}
+
+.seccion-blanca {
+  background: var(--superficie);
+}
+
+@media (min-width: 720px) {
+  .seccion {
+    padding-block: 96px;
+  }
+}
+
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 640px;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--azul);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.titulo-seccion {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+/* ── Botones: reaccionan al toque ───────────────────────────────────── */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 16px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition:
+    transform 160ms var(--ease-out),
+    box-shadow 300ms var(--ease-ios),
+    background-color 200ms ease;
+}
+
+.boton:active {
+  transform: scale(0.97);
+}
+
+.boton-primario {
+  background: var(--azul);
+  color: #fff;
+  box-shadow: 0 8px 24px rgb(0 80 170 / 0.28);
+}
+
+.boton-secundario {
+  background: var(--superficie);
+  color: var(--azul);
+  box-shadow: var(--sombra-s);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--azul-marino);
+  }
+
+  .boton-primario:hover {
+    background: var(--azul-marino);
+    color: #fff;
+  }
+
+  .boton-secundario:hover {
+    color: var(--azul-marino);
+    box-shadow: 0 6px 18px rgb(20 70 130 / 0.12);
+  }
+}
+
+/* ── Animaciones ────────────────────────────────────────────────────── */
+
+/* Entrada del hero: una sola vez por visita. */
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(var(--desde, 12px));
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+.entrada {
+  animation: entrar 600ms var(--ease-out) both;
+  animation-delay: var(--retraso, 0ms);
+}
+
+/* Aparición al hacer scroll, solo si el navegador lo soporta;
+   si no, el contenido simplemente está visible. */
+@supports (animation-timeline: view()) {
+  .revelar {
+    animation: entrar linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 90%;
+    --desde: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada {
+    animation: aparecer 200ms ease both;
+  }
+
+  .revelar {
+    animation: none;
+  }
+  /* La escala al tocar (0.97) se conserva: es retroalimentación, no desplazamiento. */
+}
+
+main:focus {
+  outline: none;
+}

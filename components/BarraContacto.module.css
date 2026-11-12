@@ -1,0 +1,91 @@
+.barra {
+  position: fixed;
+  z-index: 30;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  translate: -50% 0;
+  width: min(420px, calc(100vw - 24px));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--radio-m);
+  background: rgb(255 255 255 / 0.78);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: var(--sombra-flotante), inset 0 0 0 1px rgb(255 255 255 / 0.5);
+}
+
+/* En el celular: icono arriba, texto abajo, como una barra de pestañas. */
+.boton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 54px;
+  padding: 6px 4px;
+  border-radius: 16px;
+  background: #f0f0f3;
+  color: var(--texto);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms ease;
+}
+
+.boton:active {
+  transform: scale(0.96);
+}
+
+.primario {
+  background: var(--azul);
+  color: #fff;
+}
+
+@media (min-width: 720px) {
+  .barra {
+    width: auto;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .boton {
+    flex-direction: row;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 20px;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .boton:hover {
+    color: var(--azul);
+    background: #e6e9ef;
+  }
+
+  .primario:hover {
+    color: #fff;
+    background: var(--azul-marino);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .barra {
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media print {
+  .barra {
+    display: none;
+  }
+}

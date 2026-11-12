@@ -1,0 +1,243 @@
+.raiz {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Control segmentado ─────────────────────────────────────────────── */
+.segmentos {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  max-width: 100%;
+  padding: 4px;
+  gap: 2px;
+  border-radius: var(--radio-s);
+  background: #ededf0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.segmentos::-webkit-scrollbar {
+  display: none;
+}
+
+.indicador {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12), 0 0 0 0.5px rgb(0 0 0 / 0.04);
+  transition:
+    transform 320ms var(--ease-ios),
+    width 320ms var(--ease-ios);
+}
+
+.segmento {
+  position: relative; /* encima del indicador */
+  flex: 1 0 auto;
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--texto-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: color 200ms ease, transform 160ms var(--ease-out);
+}
+
+.segmento:active {
+  transform: scale(0.96);
+}
+
+.segmento[aria-pressed='true'] {
+  color: var(--texto);
+}
+
+/* Sin JavaScript (o antes de medir): el botón activo pinta su propio fondo. */
+.segmentos:not([data-indicador]) .segmento[aria-pressed='true'] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+}
+
+/* ── Tarjetas ───────────────────────────────────────────────────────── */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 12px;
+}
+
+.animar > li {
+  animation: aparecerTarjeta 240ms var(--ease-out) both;
+}
+
+@keyframes aparecerTarjeta {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+.tarjeta {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  grid-template-areas:
+    'icono nombre insignia'
+    'icono resumen resumen';
+  column-gap: 14px;
+  row-gap: 2px;
+  align-items: center;
+  height: 100%;
+  padding: 14px 16px 14px 14px;
+  border-radius: 20px;
+  background: var(--fondo);
+  color: var(--texto);
+  transition:
+    transform 400ms var(--ease-ios),
+    box-shadow 400ms var(--ease-ios);
+}
+
+.tarjeta:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+
+.cabeza {
+  display: contents;
+}
+
+.icono {
+  grid-area: icono;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radio-s);
+  background: var(--superficie);
+  color: var(--azul);
+  box-shadow: var(--sombra-s);
+}
+
+.insignia {
+  grid-area: insignia;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--verde-fondo);
+  color: var(--verde-texto);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.nombre {
+  grid-area: nombre;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.resumen {
+  grid-area: resumen;
+  color: var(--texto-3);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.mas {
+  display: none;
+  color: var(--azul);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.mas span {
+  display: inline-block;
+  transition: transform 300ms var(--ease-ios);
+}
+
+@media (min-width: 720px) {
+  .segmentos {
+    align-self: flex-start;
+  }
+
+  .segmento {
+    padding: 0 16px;
+    font-size: 0.875rem;
+  }
+
+  .rejilla {
+    gap: 16px;
+  }
+
+  /* Escritorio: tarjeta vertical, como en el diseño. */
+  .tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    min-height: 210px;
+    border-radius: 24px;
+  }
+
+  .cabeza {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nombre {
+    font-size: 1.1875rem;
+  }
+
+  .resumen {
+    flex-grow: 1;
+    font-size: 0.9375rem;
+  }
+
+  .mas {
+    display: block;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgb(20 70 130 / 0.12);
+    color: var(--texto);
+  }
+
+  .tarjeta:hover .mas span {
+    transform: translateX(3px);
+  }
+
+  .segmento:hover {
+    color: var(--texto);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicador {
+    transition: none;
+  }
+
+  .animar > li {
+    animation: none;
+  }
+
+  .tarjeta {
+    transition: box-shadow 200ms ease;
+  }
+
+  .tarjeta:hover {
+    transform: none;
+  }
+}

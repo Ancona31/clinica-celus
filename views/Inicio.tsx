@@ -1,5 +1,14 @@
 import type { CSSProperties } from 'react';
-import { CLINICA, ESPECIALISTAS, ICONOS, SERVICIOS } from '@/content/datos';
+import Link from 'next/link';
+import {
+  CLINICA,
+  ESPECIALISTAS,
+  ESPECIALISTAS_INICIO,
+  FOTOS,
+  ICONOS,
+  SERVICIOS,
+  type IdFoto,
+} from '@/content/datos';
 import type { Lang } from '@/content/types';
 import { diccionario, enlaceTelefono, enlaceWhatsApp, rellenar, ruta } from '@/lib/i18n';
 import { Foto } from '@/components/Foto';
@@ -12,6 +21,9 @@ import s from './Inicio.module.css';
 // Coreografía de entrada del hero (una vez por visita):
 // título = protagonista; subtítulo y botones lo siguen; la foto se asienta
 // en paralelo y la tarjeta 24 h aterriza al final sobre la foto.
+// Foto de cada bloque de "Por qué Celus" (null = foto pendiente).
+const FOTOS_BLOQUES: (IdFoto | null)[] = ['equipo', 'rayosX', null];
+
 const paso = (retraso: number, desde = 12): CSSProperties =>
   ({ '--retraso': `${retraso}ms`, '--desde': `${desde}px` }) as CSSProperties;
 
@@ -60,9 +72,11 @@ export function Inicio({ lang }: { lang: Lang }) {
         <div className={s.heroFoto}>
           <div className={`${s.fotoFachada} ${s.asentar}`}>
             <Foto
+              src={FOTOS.fachada.src}
+              ancho={FOTOS.fachada.ancho}
+              alto={FOTOS.fachada.alto}
               alt={ti.fotoFachada}
               pendiente={pendiente(ti.fotoFachada)}
-              marcaDeAgua
               prioridad
             />
           </div>
@@ -129,17 +143,26 @@ export function Inicio({ lang }: { lang: Lang }) {
               {ti.porque.titulo}
             </h2>
           </div>
-          {ti.porque.bloques.map((b, i) => (
+          {ti.porque.bloques.map((b, i) => {
+            const foto = FOTOS_BLOQUES[i] ? FOTOS[FOTOS_BLOQUES[i]] : null;
+            return (
             <div key={b.titulo} className={`${s.bloque} ${i % 2 ? s.bloqueInvertido : ''} revelar`}>
               <div className={s.bloqueFoto}>
-                <Foto alt={b.foto} pendiente={pendiente(b.foto)} />
+                <Foto
+                  src={foto?.src}
+                  ancho={foto?.ancho}
+                  alto={foto?.alto}
+                  alt={b.foto}
+                  pendiente={pendiente(b.foto)}
+                />
               </div>
               <div className={s.bloqueTexto}>
                 <h3>{b.titulo}</h3>
                 <p>{b.texto}</p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -157,7 +180,9 @@ export function Inicio({ lang }: { lang: Lang }) {
             </h2>
           </div>
           <ul className={s.especialistas}>
-            {ESPECIALISTAS.map((e) => {
+            {ESPECIALISTAS.filter((e) =>
+              (ESPECIALISTAS_INICIO as readonly string[]).includes(e.id),
+            ).map((e) => {
               const te = t.especialistas[e.id];
               return (
                 <li key={e.id}>
@@ -175,6 +200,9 @@ export function Inicio({ lang }: { lang: Lang }) {
               );
             })}
           </ul>
+          <Link href={ruta(lang, '/especialistas')} className={s.verTodos}>
+            {ti.especialistas.verTodos} <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
@@ -201,6 +229,8 @@ export function Inicio({ lang }: { lang: Lang }) {
               {CLINICA.direccion.calle}, {CLINICA.direccion.colonia}
               <br />
               {CLINICA.direccion.ciudad}, {CLINICA.direccion.estado} · {t.pie.cp} {CLINICA.direccion.cp}
+              <br />
+              <span className={s.referencia}>{t.contacto.referencia}</span>
             </address>
             <ul className={s.horarios}>
               {ti.ubicacion.horarios.map((h) => (

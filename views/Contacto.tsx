@@ -35,6 +35,7 @@ export function Contacto({ lang }: { lang: Lang }) {
               <br />
               {direccion.ciudad}, {direccion.estado} · {t.pie.cp} {direccion.cp}
             </address>
+            <p className={s.ayuda}>{tc.referencia}</p>
             <a className={`boton boton-secundario ${s.botonPanel}`} href={CLINICA.comoLlegar}>
               <Icono d={ICONOS.ubicacion} tamano={18} />
               {t.acciones.comoLlegar}

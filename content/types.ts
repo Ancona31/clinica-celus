@@ -67,7 +67,7 @@ export interface Diccionario {
       mostrando: string;
     };
     porque: Eyebrow & { bloques: { titulo: string; texto: string; foto: string }[] };
-    especialistas: Eyebrow;
+    especialistas: Eyebrow & { verTodos: string };
     galeria: { aria: string; fotos: string[] };
     ubicacion: Eyebrow & {
       horarios: { etiqueta: string; valor: string }[];
@@ -87,12 +87,20 @@ export interface Diccionario {
       nota?: string;
       horario: string;
       whatsapp: string;
+      /** Texto alternativo de la foto del servicio, si tiene. */
+      fotoAlt?: string;
     }
   >;
 
   migas: { aria: string };
 
-  paginaServicios: { meta: Meta; eyebrow: string; titulo: string; intro: string };
+  paginaServicios: {
+    meta: Meta;
+    eyebrow: string;
+    titulo: string;
+    intro: string;
+    tambien: { titulo: string; items: string[] };
+  };
 
   paginaServicio: {
     queEs: string;
@@ -113,6 +121,8 @@ export interface Diccionario {
     titulo: string;
     intro: string;
     verServicio: string;
+    especialistas: string;
+    generales: string;
   };
 
   contacto: {
@@ -121,6 +131,7 @@ export interface Diccionario {
     titulo: string;
     intro: string;
     direccion: string;
+    referencia: string;
     telefono: string;
     telefonoNota: string;
     horarios: string;

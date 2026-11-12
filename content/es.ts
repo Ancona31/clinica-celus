@@ -49,7 +49,7 @@ export const es: Diccionario = {
     tituloResaltado: 'necesitas hoy?',
     subtitulo:
       'Consulta médica, especialistas, rayos X y laboratorio en un solo lugar, en el centro de Umán. Te atendemos a cualquier hora.',
-    fotoFachada: 'Fachada de Clínica Celus',
+    fotoFachada: 'Fachada de Clínica Celus en el centro de Umán, de noche',
     tarjeta24h: {
       titulo: '24 horas, 365 días',
       texto: 'Consulta general, rayos X y ambulancia',
@@ -81,23 +81,27 @@ export const es: Diccionario = {
           titulo: 'Abiertos día y noche',
           texto:
             'Consulta general, rayos X y ambulancia las 24 horas. Si es de madrugada o en fin de semana, aquí hay un médico para atenderte.',
-          foto: 'Consultorio de Clínica Celus',
+          foto: 'Equipo médico de Clínica Celus',
         },
         {
           titulo: 'Tus estudios en el mismo lugar',
           texto:
             'Laboratorio con más de 800 pruebas, ultrasonido y rayos X. Tu consulta y tus estudios, sin tener que ir a otra parte.',
-          foto: 'Área de rayos X o laboratorio',
+          foto: 'Técnico de rayos X con una placa de radiografía digital',
         },
         {
           titulo: 'Especialistas cerca de ti',
           texto:
-            'Pediatría, ginecología y obstetricia, nutrición, y trauma y ortopedia en la misma clínica, con cita previa.',
-          foto: 'Equipo médico de Clínica Celus',
+            'Pediatría, ginecología y obstetricia, nutrición, trauma y ortopedia, y cirugía general en la misma clínica, con cita previa.',
+          foto: 'Consultorio de especialidad',
         },
       ],
     },
-    especialistas: { eyebrow: 'Especialistas', titulo: 'Conoce a nuestros médicos' },
+    especialistas: {
+      eyebrow: 'Especialistas',
+      titulo: 'Conoce a nuestros médicos',
+      verTodos: 'Ver a todos los médicos',
+    },
     galeria: {
       aria: 'Galería de la clínica',
       fotos: ['Recepción', 'Sala de espera', 'Ultrasonido', 'Ambulancia'],
@@ -134,7 +138,7 @@ export const es: Diccionario = {
         'Cuando no sabes a qué especialista acudir.',
       ],
       nota: 'Si la situación pone en riesgo la vida (dificultad para respirar, dolor fuerte en el pecho, pérdida del conocimiento), llama al 911 o a la clínica de inmediato.',
-      horario: 'Las 24 horas, los 365 días.',
+      horario: 'Las 24 horas, los 365 días. Sin cita.',
       whatsapp: 'Hola, quiero agendar una consulta de medicina general en Clínica Celus.',
     },
     'rayos-x': {
@@ -159,6 +163,7 @@ export const es: Diccionario = {
       nota: 'Si tienes orden médica, tráela contigo. Avísanos antes del estudio si estás o podrías estar embarazada.',
       horario: 'Las 24 horas, los 365 días.',
       whatsapp: 'Hola, quiero información para un estudio de rayos X en Clínica Celus.',
+      fotoAlt: 'Técnico de rayos X con una placa de radiografía digital',
     },
     laboratorio: {
       nombre: 'Laboratorio clínico',
@@ -171,7 +176,7 @@ export const es: Diccionario = {
       intro: 'Más de 800 pruebas de laboratorio para apoyar el diagnóstico y el seguimiento de tu salud.',
       queEs: [
         'En el laboratorio clínico se analizan muestras como sangre u orina. Los resultados ayudan a tu médico a confirmar un diagnóstico, vigilar un tratamiento o revisar tu salud en general.',
-        'Tenemos un catálogo de más de 800 pruebas.',
+        'Tenemos un catálogo de más de 800 pruebas, y en muchos estudios tus resultados están listos el mismo día.',
       ],
       cuandoAcudir: [
         'Cuando tu médico te pide estudios de laboratorio.',
@@ -224,7 +229,7 @@ export const es: Diccionario = {
         'Seguimiento de una enfermedad.',
       ],
       nota: 'Si tu bebé, tu hija o tu hijo tiene dificultad para respirar, está muy decaído o tiene fiebre que no baja, ven de inmediato: medicina general te atiende las 24 horas.',
-      horario: 'Con cita previa · horario [PENDIENTE]',
+      horario: 'Lunes a viernes, con cita previa.',
       whatsapp: 'Hola, quiero agendar una consulta de pediatría en Clínica Celus.',
     },
     'ginecologia-y-obstetricia': {
@@ -295,6 +300,53 @@ export const es: Diccionario = {
       horario: 'Lunes a viernes, de 17:00 a 20:00 h, con cita.',
       whatsapp: 'Hola, quiero agendar una consulta de trauma y ortopedia en Clínica Celus.',
     },
+    'cirugia-general': {
+      nombre: 'Cirugía general',
+      resumen: 'Hernias, vesícula, apéndice y otras cirugías, con valoración previa.',
+      meta: {
+        title: 'Cirugía general en Umán · Hernia, vesícula y apéndice · Clínica Celus',
+        description:
+          'Valoración y cirugía general en Umán, Yucatán: hernias, vesícula, apéndice y más, con valoración preoperatoria. Agenda por WhatsApp al 999 222 31 73.',
+      },
+      intro: 'Valoración quirúrgica y cirugía general: hernias, vesícula, apéndice y más.',
+      queEs: [
+        'La cirugía general atiende problemas del abdomen y de la pared abdominal que pueden requerir una operación, como las hernias, las piedras en la vesícula o la apendicitis.',
+        'Antes de cualquier cirugía te hacemos una valoración preoperatoria para revisar tu estado de salud y explicarte las opciones, los riesgos y la recuperación.',
+      ],
+      cuandoAcudir: [
+        'Un bulto en la ingle, el ombligo o una cicatriz que duele o crece (posible hernia).',
+        'Dolor en la parte alta derecha del abdomen después de comer (posible problema de vesícula).',
+        'Dolor abdominal que empieza cerca del ombligo y se mueve hacia el lado derecho.',
+        'Cuando tu médico te indica una valoración quirúrgica.',
+      ],
+      nota: 'Un dolor abdominal fuerte que no cede, con fiebre o vómito, es una urgencia: ven de inmediato, medicina general te atiende las 24 horas.',
+      horario: 'Valoración con cita · horario [PENDIENTE]',
+      whatsapp: 'Hola, quiero agendar una valoración de cirugía general en Clínica Celus.',
+      fotoAlt: 'Cirujanos del equipo de Clínica Celus durante una cirugía',
+    },
+    electrocardiograma: {
+      nombre: 'Electrocardiograma',
+      resumen: 'Estudio del corazón disponible las 24 horas, sin cita.',
+      meta: {
+        title: 'Electrocardiograma 24 horas en Umán · Clínica Celus',
+        description:
+          'Electrocardiograma las 24 horas, sin cita ni preparación, en el centro de Umán, Yucatán. Llama o escribe al 999 222 31 73.',
+      },
+      intro: 'Electrocardiograma a cualquier hora, sin cita y sin preparación.',
+      queEs: [
+        'El electrocardiograma registra la actividad eléctrica de tu corazón con unos electrodos que se colocan en el pecho, los brazos y las piernas.',
+        'Es rápido, no duele y no necesita preparación. Ayuda a tu médico a revisar el ritmo del corazón y otras alteraciones.',
+      ],
+      cuandoAcudir: [
+        'Cuando tu médico te pide un electrocardiograma.',
+        'Como parte de una valoración antes de una cirugía.',
+        'Palpitaciones o sensación de que el corazón late de forma irregular.',
+        'Revisiones de control si tienes presión alta, diabetes u otra enfermedad crónica.',
+      ],
+      nota: 'Si tienes dolor en el pecho, falta de aire o te desmayaste, no esperes: llama al 911 o ven de inmediato a urgencias.',
+      horario: 'Las 24 horas, los 365 días. Sin cita.',
+      whatsapp: 'Hola, quiero información para hacerme un electrocardiograma en Clínica Celus.',
+    },
     ambulancia: {
       nombre: 'Ambulancia',
       resumen: 'Traslados de urgencia y programados.',
@@ -330,6 +382,15 @@ export const es: Diccionario = {
     eyebrow: 'Servicios',
     titulo: 'Servicios médicos en Umán',
     intro: 'Consulta, estudios y especialistas en un mismo lugar. Elige un servicio para saber cuándo acudir y agendar por WhatsApp.',
+    tambien: {
+      titulo: 'También te atendemos con',
+      items: [
+        'Medicina interna',
+        'Sueroterapia las 24 horas',
+        'Curación de heridas avanzadas, como pie diabético',
+        'Cirugía de carnosidad (pterigión)',
+      ],
+    },
   },
 
   paginaServicio: {
@@ -355,6 +416,8 @@ export const es: Diccionario = {
     titulo: 'Conoce a nuestros médicos',
     intro: 'Las consultas de especialidad son con cita previa. Escríbenos por WhatsApp y te damos el horario disponible.',
     verServicio: 'Ver {servicio}',
+    especialistas: 'Especialistas',
+    generales: 'Medicina general y urgencias',
   },
 
   contacto: {
@@ -367,17 +430,20 @@ export const es: Diccionario = {
     titulo: 'Estamos en el centro de Umán',
     intro: 'Ven cuando lo necesites: urgencias, medicina general, rayos X y ambulancia te atienden las 24 horas.',
     direccion: 'Dirección',
+    referencia: 'Frente a la Panadería Castillo del mercado, a un costado del Telcel.',
     telefono: 'Teléfono y WhatsApp',
     telefonoNota: 'Para urgencias, llama. Para agendar, escríbenos por WhatsApp.',
     horarios: 'Horarios',
     listaHorarios: [
       { servicio: 'Urgencias y medicina general', horario: '24 horas, los 365 días' },
       { servicio: 'Rayos X', horario: '24 horas, los 365 días' },
+      { servicio: 'Electrocardiograma', horario: '24 horas, los 365 días' },
       { servicio: 'Ambulancia', horario: '24 horas, los 365 días' },
       { servicio: 'Laboratorio clínico', horario: '[PENDIENTE]' },
       { servicio: 'Ultrasonido', horario: 'Con cita · [PENDIENTE]' },
       { servicio: 'Trauma y Ortopedia', horario: 'Lunes a viernes, 17:00 a 20:00 h, con cita' },
-      { servicio: 'Pediatría, Ginecología y Nutrición', horario: 'Con cita · [PENDIENTE]' },
+      { servicio: 'Pediatría', horario: 'Lunes a viernes, con cita' },
+      { servicio: 'Ginecología, Nutrición y Cirugía', horario: 'Con cita · [PENDIENTE]' },
     ],
   },
 
@@ -388,23 +454,71 @@ export const es: Diccionario = {
       horario: 'Lunes a viernes · 17:00 a 20:00 h · con cita',
       foto: 'Dr. Angel M. Ancona Pérez',
     },
-    pediatria: {
-      nombre: '[PENDIENTE]',
-      especialidad: 'Pediatría',
-      horario: '[PENDIENTE]',
-      foto: 'Pediatra de Clínica Celus',
+    cruz: {
+      nombre: 'Dr. Maximiliano Cruz Palacios',
+      especialidad: 'Traumatología y Ortopedia · Alta especialidad en rodilla',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. Maximiliano Cruz Palacios',
     },
-    ginecologia: {
-      nombre: '[PENDIENTE]',
-      especialidad: 'Ginecología y Obstetricia',
-      horario: '[PENDIENTE]',
-      foto: 'Especialista en ginecología de Clínica Celus',
+    'roman-herrera': {
+      nombre: 'Dr. Juan Josué Román Herrera',
+      especialidad: 'Ginecología y Obstetricia · Colposcopia',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. Juan Josué Román Herrera',
     },
-    nutricion: {
-      nombre: '[PENDIENTE]',
-      especialidad: 'Nutrición',
-      horario: '[PENDIENTE]',
-      foto: 'Especialista en nutrición de Clínica Celus',
+    osorio: {
+      nombre: 'Dr. Iván de Jesús Osorio Ruiz',
+      especialidad: 'Pediatría y Neonatología',
+      horario: 'Lunes a viernes · con cita',
+      foto: 'Dr. Iván de Jesús Osorio Ruiz',
+    },
+    'pedro-campos': {
+      nombre: 'Dr. Pedro A. Pedro Campos',
+      especialidad: 'Médico imagenólogo · Ultrasonido',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. Pedro A. Pedro Campos',
+    },
+    zurita: {
+      nombre: 'Nut. Humberto Zurita',
+      especialidad: 'Nutrición y entrenamiento deportivo',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Nut. Humberto Zurita',
+    },
+    coronado: {
+      nombre: 'Dr. César Coronado',
+      especialidad: 'Médico cirujano · Dirección general',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. César Coronado',
+    },
+    manzano: {
+      nombre: 'Dr. Eduardo Manzano',
+      especialidad: 'Cirugía',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. Eduardo Manzano',
+    },
+    martinez: {
+      nombre: 'Dr. Luis A. Martínez',
+      especialidad: 'Valoración preoperatoria y preanestésica',
+      horario: 'Con cita · [PENDIENTE]',
+      foto: 'Dr. Luis A. Martínez',
+    },
+    rodriguez: {
+      nombre: 'Dr. Humberto Rodríguez',
+      especialidad: 'Medicina general',
+      horario: 'Turno nocturno',
+      foto: 'Dr. Humberto Rodríguez',
+    },
+    'hernandez-guzman': {
+      nombre: 'Dr. José Eduardo Hernández Guzmán',
+      especialidad: 'Medicina general',
+      horario: 'Horario [PENDIENTE]',
+      foto: 'Dr. José Eduardo Hernández Guzmán',
+    },
+    zavala: {
+      nombre: 'Dr. Adrián Zavala',
+      especialidad: 'Medicina general',
+      horario: 'Horario [PENDIENTE]',
+      foto: 'Dr. Adrián Zavala',
     },
   },
 

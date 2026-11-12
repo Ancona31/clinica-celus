@@ -349,6 +349,16 @@
   }
 }
 
+.verTodos {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  min-height: 44px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
 /* ── Galería ────────────────────────────────────────────────────────── */
 .galeriaSeccion {
   padding-top: 72px;
@@ -420,6 +430,11 @@
   font-size: 1.0625rem;
   font-style: normal;
   line-height: 1.6;
+}
+
+.referencia {
+  font-size: 0.9375rem;
+  color: #a9c6ec;
 }
 
 .horarios {

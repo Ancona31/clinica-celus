@@ -1,0 +1,27 @@
+.tambien {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.tambien ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tambien li {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--fondo);
+  color: var(--texto-2);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.tambien :global(.boton) {
+  align-self: flex-start;
+  background: var(--fondo);
+  box-shadow: none;
+}

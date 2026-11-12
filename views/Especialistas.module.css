@@ -1,3 +1,13 @@
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grupo + .grupo {
+  margin-top: 48px;
+}
+
 .lista {
   display: grid;
   gap: 12px;

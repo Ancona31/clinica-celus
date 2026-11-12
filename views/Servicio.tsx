@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { CLINICA, ESPECIALISTAS, ICONOS, servicioPorSlug, type SlugServicio } from '@/content/datos';
+import {
+  CLINICA,
+  ESPECIALISTAS,
+  FOTOS,
+  ICONOS,
+  servicioPorSlug,
+  type SlugServicio,
+} from '@/content/datos';
 import type { Lang } from '@/content/types';
 import { diccionario, enlaceTelefono, enlaceWhatsApp, rellenar, ruta } from '@/lib/i18n';
 import { Foto } from '@/components/Foto';
@@ -14,7 +21,8 @@ export function Servicio({ lang, slug }: { lang: Lang; slug: SlugServicio }) {
   const tp = t.paginaServicio;
   const datos = servicioPorSlug(slug)!;
   const ts = t.servicios[slug];
-  const especialista = ESPECIALISTAS.find((e) => e.servicio === slug);
+  const especialistas = ESPECIALISTAS.filter((e) => e.servicio === slug);
+  const foto = datos.foto ? FOTOS[datos.foto] : null;
   const llamarPrimero = 'llamarPrimero' in datos && datos.llamarPrimero;
 
   const botonWhatsApp = (
@@ -62,9 +70,15 @@ export function Servicio({ lang, slug }: { lang: Lang; slug: SlugServicio }) {
         <div className={p.ctas}>{botones}</div>
       </header>
 
-      {datos.foto && (
+      {foto && (
         <div className={`${s.foto} revelar`}>
-          <Foto src={datos.foto} alt={ts.nombre} pendiente={ts.nombre} />
+          <Foto
+            src={foto.src}
+            ancho={foto.ancho}
+            alto={foto.alto}
+            alt={ts.fotoAlt ?? ts.nombre}
+            pendiente={ts.nombre}
+          />
         </div>
       )}
 
@@ -118,26 +132,28 @@ export function Servicio({ lang, slug }: { lang: Lang; slug: SlugServicio }) {
             </p>
           </section>
 
-          {especialista && (
+          {especialistas.length > 0 && (
             <section aria-labelledby="quien" className={s.quien}>
               <h2 id="quien" className={s.etiqueta}>
                 {tp.quienTeAtiende}
               </h2>
-              <TarjetaEspecialista
-                nombre={t.especialistas[especialista.id].nombre}
-                especialidad={t.especialistas[especialista.id].especialidad}
-                horario={t.especialistas[especialista.id].horario}
-                fotoAlt={t.especialistas[especialista.id].foto}
-                fotoPendiente={rellenar(t.foto.pendiente, {
-                  descripcion: t.especialistas[especialista.id].foto,
-                })}
-                sitio={especialista.sitio}
-                verPerfil={t.acciones.verPerfil}
-                etiquetaPerfil={rellenar(t.acciones.verPerfilDe, {
-                  nombre: t.especialistas[especialista.id].nombre,
-                })}
-                compacta
-              />
+              {especialistas.map((e) => {
+                const te = t.especialistas[e.id];
+                return (
+                  <TarjetaEspecialista
+                    key={e.id}
+                    nombre={te.nombre}
+                    especialidad={te.especialidad}
+                    horario={te.horario}
+                    fotoAlt={te.foto}
+                    fotoPendiente={rellenar(t.foto.pendiente, { descripcion: te.foto })}
+                    sitio={e.sitio}
+                    verPerfil={t.acciones.verPerfil}
+                    etiquetaPerfil={rellenar(t.acciones.verPerfilDe, { nombre: te.nombre })}
+                    compacta
+                  />
+                );
+              })}
             </section>
           )}
 

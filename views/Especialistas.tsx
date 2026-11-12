@@ -27,31 +27,38 @@ export function Especialistas({ lang }: { lang: Lang }) {
           </a>
         </div>
       </header>
-      <ul className={s.lista}>
-        {ESPECIALISTAS.map((e) => {
-          const te = t.especialistas[e.id];
-          const servicio = t.servicios[e.servicio].nombre;
-          return (
-            <li key={e.id}>
-              <TarjetaEspecialista
-                nombre={te.nombre}
-                especialidad={te.especialidad}
-                horario={te.horario}
-                fotoAlt={te.foto}
-                fotoPendiente={rellenar(t.foto.pendiente, { descripcion: te.foto })}
-                sitio={e.sitio}
-                verPerfil={t.acciones.verPerfil}
-                etiquetaPerfil={rellenar(t.acciones.verPerfilDe, { nombre: te.nombre })}
-                nivelTitulo="h2"
-              >
-                <Link href={ruta(lang, `/servicios/${e.servicio}`)} className={s.servicio}>
-                  {rellenar(tp.verServicio, { servicio })} <span aria-hidden="true">→</span>
-                </Link>
-              </TarjetaEspecialista>
-            </li>
-          );
-        })}
-      </ul>
+      {(['especialista', 'general'] as const).map((grupo) => (
+        <section key={grupo} aria-labelledby={`grupo-${grupo}`} className={s.grupo}>
+          <h2 id={`grupo-${grupo}`} className={p.subtitulo}>
+            {grupo === 'especialista' ? tp.especialistas : tp.generales}
+          </h2>
+          <ul className={s.lista}>
+            {ESPECIALISTAS.filter((e) => e.grupo === grupo).map((e) => {
+              const te = t.especialistas[e.id];
+              const servicio = t.servicios[e.servicio].nombre;
+              return (
+                <li key={e.id}>
+                  <TarjetaEspecialista
+                    nombre={te.nombre}
+                    especialidad={te.especialidad}
+                    horario={te.horario}
+                    fotoAlt={te.foto}
+                    fotoPendiente={rellenar(t.foto.pendiente, { descripcion: te.foto })}
+                    sitio={e.sitio}
+                    verPerfil={t.acciones.verPerfil}
+                    etiquetaPerfil={rellenar(t.acciones.verPerfilDe, { nombre: te.nombre })}
+                    nivelTitulo="h3"
+                  >
+                    <Link href={ruta(lang, `/servicios/${e.servicio}`)} className={s.servicio}>
+                      {rellenar(tp.verServicio, { servicio })} <span aria-hidden="true">→</span>
+                    </Link>
+                  </TarjetaEspecialista>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
     </div>
   );
 }

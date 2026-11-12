@@ -8,7 +8,7 @@ export const CLINICA = {
   telefonoE164: '+529992223173',
   whatsapp: '529992223173',
   direccion: {
-    calle: 'Calle 20 × 23 y 25',
+    calle: 'Calle 20 #110 I × 23 y 25',
     colonia: 'Centro',
     ciudad: 'Umán',
     estado: 'Yucatán',
@@ -18,9 +18,20 @@ export const CLINICA = {
   comoLlegar: 'https://maps.app.goo.gl/iFPgfT1iG4HoviLz9',
   mapaEmbed:
     'https://maps.google.com/maps?q=20.87988952572975,-89.7481702443132&z=16&hl=es&output=embed',
-  cofepris: '2531012020A00260',
+  cofepris: '2531012002A00260',
   pruebasLaboratorio: 800,
 } as const;
+
+// Fotos en /public/images (origen: página de Facebook de la clínica).
+// Los textos alternativos están en los diccionarios (fotos.*).
+export const FOTOS = {
+  fachada: { src: '/images/fachada.jpg', ancho: 1200, alto: 1600 },
+  equipo: { src: '/images/equipo-medico.jpg', ancho: 1060, alto: 795 },
+  rayosX: { src: '/images/rayos-x.jpg', ancho: 600, alto: 450 },
+  cirugia: { src: '/images/cirugia.jpg', ancho: 960, alto: 720 },
+} as const;
+
+export type IdFoto = keyof typeof FOTOS;
 
 export type Categoria = 'urgencias' | 'especialidades' | 'estudios';
 export type NombreIcono = keyof typeof ICONOS;
@@ -43,7 +54,7 @@ export const SERVICIOS = [
     categoria: 'estudios',
     h24: true,
     relacionados: ['trauma-y-ortopedia', 'medicina-general', 'ultrasonido'],
-    foto: null,
+    foto: 'rayosX',
   },
   {
     slug: 'laboratorio',
@@ -94,6 +105,22 @@ export const SERVICIOS = [
     foto: null,
   },
   {
+    slug: 'cirugia-general',
+    icono: 'bisturi',
+    categoria: 'especialidades',
+    h24: false,
+    relacionados: ['medicina-general', 'laboratorio', 'ultrasonido'],
+    foto: 'cirugia',
+  },
+  {
+    slug: 'electrocardiograma',
+    icono: 'corazon',
+    categoria: 'estudios',
+    h24: true,
+    relacionados: ['medicina-general', 'laboratorio', 'ambulancia'],
+    foto: null,
+  },
+  {
     slug: 'ambulancia',
     icono: 'ambulancia',
     categoria: 'urgencias',
@@ -109,7 +136,7 @@ export const SERVICIOS = [
   h24: boolean;
   llamarPrimero?: boolean;
   relacionados: readonly string[];
-  foto: string | null;
+  foto: IdFoto | null;
 }[];
 
 export type SlugServicio = (typeof SERVICIOS)[number]['slug'];
@@ -119,13 +146,30 @@ export function servicioPorSlug(slug: string): Servicio | undefined {
   return SERVICIOS.find((s) => s.slug === slug);
 }
 
+// Médicos confirmados por la clínica. grupo: 'especialista' o 'general'.
 // sitio: enlace externo al perfil del médico, si lo tiene.
 export const ESPECIALISTAS = [
-  { id: 'ancona', servicio: 'trauma-y-ortopedia', sitio: 'https://www.dranconacolumna.com' },
-  { id: 'pediatria', servicio: 'pediatria', sitio: null },
-  { id: 'ginecologia', servicio: 'ginecologia-y-obstetricia', sitio: null },
-  { id: 'nutricion', servicio: 'nutricion', sitio: null },
-] as const satisfies readonly { id: string; servicio: SlugServicio; sitio: string | null }[];
+  { id: 'ancona', servicio: 'trauma-y-ortopedia', grupo: 'especialista', sitio: 'https://www.dranconacolumna.com' },
+  { id: 'cruz', servicio: 'trauma-y-ortopedia', grupo: 'especialista', sitio: null },
+  { id: 'roman-herrera', servicio: 'ginecologia-y-obstetricia', grupo: 'especialista', sitio: null },
+  { id: 'osorio', servicio: 'pediatria', grupo: 'especialista', sitio: null },
+  { id: 'pedro-campos', servicio: 'ultrasonido', grupo: 'especialista', sitio: null },
+  { id: 'zurita', servicio: 'nutricion', grupo: 'especialista', sitio: null },
+  { id: 'coronado', servicio: 'cirugia-general', grupo: 'especialista', sitio: null },
+  { id: 'manzano', servicio: 'cirugia-general', grupo: 'especialista', sitio: null },
+  { id: 'martinez', servicio: 'cirugia-general', grupo: 'especialista', sitio: null },
+  { id: 'rodriguez', servicio: 'medicina-general', grupo: 'general', sitio: null },
+  { id: 'hernandez-guzman', servicio: 'medicina-general', grupo: 'general', sitio: null },
+  { id: 'zavala', servicio: 'medicina-general', grupo: 'general', sitio: null },
+] as const satisfies readonly {
+  id: string;
+  servicio: SlugServicio;
+  grupo: 'especialista' | 'general';
+  sitio: string | null;
+}[];
+
+/** Los que aparecen en la página de inicio. */
+export const ESPECIALISTAS_INICIO = ['ancona', 'cruz', 'roman-herrera', 'osorio'] as const;
 
 export type IdEspecialista = (typeof ESPECIALISTAS)[number]['id'];
 
@@ -148,4 +192,6 @@ export const ICONOS = {
   menu: 'M4 7h16M4 12h16M4 17h16',
   check: 'M5 12.5l4.5 4.5L19 7.5',
   alerta: 'M12 3l9.5 17h-19zM12 10v4M12 17.5v.01',
+  bisturi: 'M20 4L9 15l-2.5-.5L4 17l3 3 2.5-2.5L9 15M14.5 9.5l2 2',
+  corazon: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10zM5.5 12h3l1.5-3 2 6 1.5-3h5',
 } as const;

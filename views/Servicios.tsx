@@ -1,9 +1,10 @@
 import { ICONOS, SERVICIOS } from '@/content/datos';
 import type { Lang } from '@/content/types';
-import { diccionario, ruta } from '@/lib/i18n';
+import { diccionario, enlaceWhatsApp, ruta } from '@/lib/i18n';
 import { Migas } from '@/components/Migas';
 import { ServiciosFiltrables } from '@/components/ServiciosFiltrables';
 import p from './Pagina.module.css';
+import s from './Servicios.module.css';
 
 export function Servicios({ lang }: { lang: Lang }) {
   const t = diccionario(lang);
@@ -41,6 +42,19 @@ export function Servicios({ lang }: { lang: Lang }) {
           nivelTitulo="h2"
         />
       </div>
+      <section aria-labelledby="tambien" className={`${p.panel} ${s.tambien}`}>
+        <h2 id="tambien" className={p.subtitulo}>
+          {tp.tambien.titulo}
+        </h2>
+        <ul>
+          {tp.tambien.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <a className="boton boton-secundario" href={enlaceWhatsApp(t.whatsapp.general)}>
+          {t.acciones.agendarWhatsapp}
+        </a>
+      </section>
     </div>
   );
 }

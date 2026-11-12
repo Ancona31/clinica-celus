@@ -49,6 +49,6 @@ export const peor: Parcial<Diccionario> = {
       especialidad: 'Ginecología, Obstetricia y Medicina Materno-Fetal',
       horario: 'Lunes, miércoles y viernes · 09:00 a 13:00 h y 16:00 a 19:00 h · con cita',
     },
-    pediatria: { nombre: 'Dr. Jo', especialidad: 'Pediatría', horario: 'Sáb.' },
+    osorio: { nombre: 'Dr. Jo', especialidad: 'Pediatría', horario: 'Sáb.' },
   },
 };

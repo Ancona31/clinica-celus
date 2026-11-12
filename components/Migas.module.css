@@ -1,0 +1,33 @@
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--texto-3);
+}
+
+.migas li {
+  display: flex;
+  align-items: center;
+}
+
+.migas li + li::before {
+  content: '›';
+  padding-inline: 6px;
+  color: var(--gris);
+}
+
+.migas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 500;
+}
+
+.migas [aria-current] {
+  color: var(--texto-2);
+  font-weight: 600;
+}

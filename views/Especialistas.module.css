@@ -1,0 +1,24 @@
+.lista {
+  display: grid;
+  gap: 12px;
+}
+
+.lista article {
+  background: var(--superficie);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.servicio {
+  align-self: flex-start;
+  padding-block: 11px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (min-width: 720px) {
+  .lista {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+}

@@ -42,7 +42,7 @@ export function ServiciosFiltrables({
 }: Props) {
   const [filtro, setFiltro] = useState<Filtro>('todos');
   const [interactuado, setInteractuado] = useState(false);
-  const [indicador, setIndicador] = useState<{ x: number; w: number } | null>(null);
+  const [indicador, setIndicador] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const grupo = useRef<HTMLDivElement>(null);
 
   // El indicador blanco se mide sobre el botón activo y se desliza con transform.
@@ -52,7 +52,7 @@ export function ServiciosFiltrables({
     if (!cont) return;
     const medir = () => {
       const b = cont.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
-      if (b) setIndicador({ x: b.offsetLeft, w: b.offsetWidth });
+      if (b) setIndicador({ x: b.offsetLeft, y: b.offsetTop, w: b.offsetWidth, h: b.offsetHeight });
     };
     medir();
     const ro = new ResizeObserver(medir);
@@ -80,7 +80,11 @@ export function ServiciosFiltrables({
           <span
             aria-hidden="true"
             className={s.indicador}
-            style={{ transform: `translateX(${indicador.x}px)`, width: indicador.w }}
+            style={{
+              transform: `translate(${indicador.x}px, ${indicador.y}px)`,
+              width: indicador.w,
+              height: indicador.h,
+            }}
           />
         )}
         {ORDEN.map((f) => (

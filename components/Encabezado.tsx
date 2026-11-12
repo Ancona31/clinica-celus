@@ -64,7 +64,7 @@ export function Encabezado({ lang, t, agendar, enlaceAgendar, mostrarIdioma }: P
   );
 
   return (
-    <header className={s.barra}>
+    <header className={s.barra} data-lang={lang}>
       <div className={`contenedor ${s.fila}`}>
         <Link href={ruta(lang, '/')} className={s.logo}>
           <img

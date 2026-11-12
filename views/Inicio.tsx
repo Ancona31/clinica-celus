@@ -4,6 +4,7 @@ import type { Lang } from '@/content/types';
 import { diccionario, enlaceTelefono, enlaceWhatsApp, rellenar, ruta } from '@/lib/i18n';
 import { Foto } from '@/components/Foto';
 import { Icono } from '@/components/Icono';
+import { Mapa } from '@/components/Mapa';
 import { ServiciosFiltrables } from '@/components/ServiciosFiltrables';
 import { TarjetaEspecialista } from '@/components/TarjetaEspecialista';
 import s from './Inicio.module.css';
@@ -219,14 +220,7 @@ export function Inicio({ lang }: { lang: Lang }) {
               </a>
             </div>
           </div>
-          <div className={s.mapa}>
-            <iframe
-              src={CLINICA.mapaEmbed}
-              title={ti.ubicacion.mapaTitulo}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <Mapa titulo={t.mapa.titulo} className={s.mapa} />
         </div>
       </section>
     </>

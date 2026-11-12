@@ -11,10 +11,22 @@ type Props = {
   alto?: number;
   prioridad?: boolean;
   marcaDeAgua?: boolean;
+  /** Oculta el texto del espacio reservado (para fotos pequeñas); el lector de pantalla sigue leyéndolo. */
+  sinTexto?: boolean;
   className?: string;
 };
 
-export function Foto({ src, alt, pendiente, ancho, alto, prioridad, marcaDeAgua, className = '' }: Props) {
+export function Foto({
+  src,
+  alt,
+  pendiente,
+  ancho,
+  alto,
+  prioridad,
+  marcaDeAgua,
+  sinTexto,
+  className = '',
+}: Props) {
   if (src) {
     return (
       <img
@@ -35,7 +47,7 @@ export function Foto({ src, alt, pendiente, ancho, alto, prioridad, marcaDeAgua,
       {marcaDeAgua && (
         <img src={asset('/brand/web/isotipo-color.svg')} alt="" width={320} height={296} className={s.marca} />
       )}
-      <span aria-hidden="true">{pendiente}</span>
+      {!sinTexto && <span aria-hidden="true">{pendiente}</span>}
     </div>
   );
 }

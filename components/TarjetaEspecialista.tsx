@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Foto } from './Foto';
 import s from './TarjetaEspecialista.module.css';
 
@@ -13,6 +14,9 @@ type Props = {
   /** Nombre accesible del enlace, p. ej. 'Ver perfil de …'. */
   etiquetaPerfil: string;
   nivelTitulo?: 'h2' | 'h3';
+  /** Foto a la izquierda en cualquier ancho (para columnas angostas). */
+  compacta?: boolean;
+  children?: ReactNode;
 };
 
 export function TarjetaEspecialista({
@@ -26,11 +30,13 @@ export function TarjetaEspecialista({
   verPerfil,
   etiquetaPerfil,
   nivelTitulo: Titulo = 'h3',
+  compacta,
+  children,
 }: Props) {
   return (
-    <article className={s.tarjeta}>
+    <article className={`${s.tarjeta} ${compacta ? s.compacta : ''}`}>
       <div className={s.foto}>
-        <Foto src={foto} alt={fotoAlt} pendiente={fotoPendiente} />
+        <Foto src={foto} alt={fotoAlt} pendiente={fotoPendiente} marcaDeAgua sinTexto />
       </div>
       <div className={s.texto}>
         <p className={s.especialidad}>{especialidad}</p>
@@ -41,6 +47,7 @@ export function TarjetaEspecialista({
             {verPerfil} <span aria-hidden="true">→</span>
           </a>
         )}
+        {children}
       </div>
     </article>
   );

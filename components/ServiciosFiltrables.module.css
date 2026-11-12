@@ -13,26 +13,22 @@
   padding: 4px;
   gap: 2px;
   border-radius: var(--radio-s);
+  flex-wrap: wrap;
   background: #ededf0;
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
-.segmentos::-webkit-scrollbar {
-  display: none;
-}
-
+/* Si las etiquetas no caben, el control pasa a dos filas y el indicador se mueve en X y Y. */
 .indicador {
   position: absolute;
-  top: 4px;
-  bottom: 4px;
+  top: 0;
   left: 0;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.12), 0 0 0 0.5px rgb(0 0 0 / 0.04);
   transition:
     transform 320ms var(--ease-ios),
-    width 320ms var(--ease-ios);
+    width 320ms var(--ease-ios),
+    height 320ms var(--ease-ios);
 }
 
 .segmento {

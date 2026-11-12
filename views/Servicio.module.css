@@ -1,0 +1,251 @@
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--superficie);
+  color: var(--azul);
+  box-shadow: var(--sombra-s);
+}
+
+.insignia {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--verde-fondo);
+  color: var(--verde-texto);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.foto {
+  aspect-ratio: 16 / 9;
+  margin-bottom: 24px;
+  border-radius: var(--radio-xl);
+  overflow: hidden;
+}
+
+.cuerpo {
+  display: grid;
+  gap: 16px;
+}
+
+.principal,
+.lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.parrafo {
+  margin-top: 12px;
+  color: var(--texto-2);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--texto-2);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #e5eef9;
+  color: var(--azul);
+}
+
+/* Aviso: tono ámbar, legible (texto oscuro sobre fondo claro). */
+.nota {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radio-m);
+  background: #fff6e0;
+  color: #5c3d00;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.nota svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #9a6400;
+}
+
+.etiqueta {
+  color: var(--texto-3);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.horario {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.horario svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--azul);
+}
+
+.quien {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quien > h2 {
+  padding-inline: 4px;
+}
+
+.cta p {
+  margin-top: 8px;
+  color: var(--texto-3);
+}
+
+.ctaBotones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* ── Servicios relacionados ─────────────────────────────────────────── */
+.relacionadosSeccion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.relacionados {
+  display: grid;
+  gap: 10px;
+}
+
+.relacionado {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px 14px 14px;
+  border-radius: 20px;
+  background: var(--superficie);
+  color: var(--texto);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+  transition:
+    transform 400ms var(--ease-ios),
+    box-shadow 400ms var(--ease-ios);
+}
+
+.relacionado:active {
+  transform: scale(0.98);
+  transition-duration: 160ms;
+}
+
+.relacionado > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.relacionado strong {
+  font-size: 1rem;
+}
+
+.relacionado strong + span {
+  color: var(--texto-3);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.iconoChico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--fondo);
+  color: var(--azul);
+}
+
+.flecha {
+  color: var(--gris);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (min-width: 900px) {
+  .cuerpo {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .lateral {
+    position: sticky;
+    top: calc(var(--alto-barra) + 24px);
+  }
+
+  .relacionadosSeccion {
+    margin-top: 72px;
+  }
+
+  .relacionados {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .relacionado:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgb(20 70 130 / 0.1);
+    color: var(--texto);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .relacionado:hover {
+    transform: none;
+  }
+}

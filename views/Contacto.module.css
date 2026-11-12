@@ -1,0 +1,111 @@
+.rejilla {
+  display: grid;
+  gap: 16px;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.etiqueta {
+  color: var(--texto-3);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.direccion {
+  margin-top: 10px;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.botonPanel {
+  margin-top: 16px;
+  background: var(--fondo);
+  box-shadow: none;
+}
+
+.numero {
+  margin-top: 8px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ayuda {
+  margin-top: 4px;
+  color: var(--texto-3);
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.botones > a {
+  flex: 1 1 auto;
+}
+
+.botones :global(.boton-secundario) {
+  background: var(--fondo);
+  box-shadow: none;
+}
+
+.horarios {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0 0;
+}
+
+.horarios > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 16px;
+  padding-block: 12px;
+  border-top: 1px solid rgb(0 0 0 / 0.06);
+}
+
+.horarios > div:first-child {
+  border-top: 0;
+}
+
+.horarios dt {
+  font-weight: 600;
+}
+
+.horarios dd {
+  margin: 0;
+  color: var(--texto-3);
+}
+
+.mapa {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radio-l);
+  overflow: hidden;
+  background: var(--placeholder);
+}
+
+@media (min-width: 900px) {
+  .rejilla {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .mapa {
+    position: sticky;
+    top: calc(var(--alto-barra) + 24px);
+    aspect-ratio: auto;
+    height: min(640px, calc(100svh - var(--alto-barra) - 48px));
+  }
+}

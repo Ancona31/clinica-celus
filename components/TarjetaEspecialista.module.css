@@ -1,8 +1,8 @@
 /* Celular: foto pequeña a la izquierda, texto a la derecha. */
 .tarjeta {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  align-items: center;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: start;
   gap: 16px;
   padding: 12px;
   border-radius: 24px;
@@ -59,8 +59,9 @@
 
 /* Escritorio: foto cuadrada arriba, como en el diseño. */
 @media (min-width: 720px) {
-  .tarjeta {
+  .tarjeta:not(.compacta) {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
     align-items: stretch;
     gap: 0;
     padding: 0;
@@ -70,23 +71,28 @@
       box-shadow 400ms var(--ease-ios);
   }
 
-  .foto {
+  .tarjeta:not(.compacta) .foto {
     border-radius: 0;
     font-size: 0.8125rem;
   }
 
-  .texto {
+  .tarjeta:not(.compacta) .texto {
     padding: 20px 22px 22px;
     gap: 6px;
   }
 
-  .nombre {
+  .tarjeta:not(.compacta) .nombre {
     font-size: 1.125rem;
   }
 }
 
+.compacta {
+  background: var(--superficie);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
 @media (min-width: 720px) and (hover: hover) and (pointer: fine) {
-  .tarjeta:hover {
+  .tarjeta:not(.compacta):hover {
     transform: translateY(-4px);
     box-shadow: 0 18px 40px rgb(20 70 130 / 0.12);
   }

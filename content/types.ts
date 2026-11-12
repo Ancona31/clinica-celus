@@ -44,6 +44,8 @@ export interface Diccionario {
 
   foto: { pendiente: string };
 
+  mapa: { titulo: string };
+
   inicio: {
     meta: Meta;
     estado: string;
@@ -69,11 +71,61 @@ export interface Diccionario {
     galeria: { aria: string; fotos: string[] };
     ubicacion: Eyebrow & {
       horarios: { etiqueta: string; valor: string }[];
-      mapaTitulo: string;
     };
   };
 
-  servicios: Record<SlugServicio, { nombre: string; resumen: string }>;
+  servicios: Record<
+    SlugServicio,
+    {
+      nombre: string;
+      resumen: string;
+      meta: Meta;
+      intro: string;
+      queEs: string[];
+      cuandoAcudir: string[];
+      /** Aviso de seguridad o de preparación, si aplica. */
+      nota?: string;
+      horario: string;
+      whatsapp: string;
+    }
+  >;
+
+  migas: { aria: string };
+
+  paginaServicios: { meta: Meta; eyebrow: string; titulo: string; intro: string };
+
+  paginaServicio: {
+    queEs: string;
+    cuandoAcudir: string;
+    importante: string;
+    horario: string;
+    disponible24: string;
+    quienTeAtiende: string;
+    relacionados: string;
+    ctaTitulo: string;
+    ctaTexto: string;
+    ctaTextoLlamar: string;
+  };
+
+  paginaEspecialistas: {
+    meta: Meta;
+    eyebrow: string;
+    titulo: string;
+    intro: string;
+    verServicio: string;
+  };
+
+  contacto: {
+    meta: Meta;
+    eyebrow: string;
+    titulo: string;
+    intro: string;
+    direccion: string;
+    telefono: string;
+    telefonoNota: string;
+    horarios: string;
+    listaHorarios: { servicio: string; horario: string }[];
+  };
 
   especialistas: Record<
     IdEspecialista,

@@ -25,19 +25,99 @@ export const CLINICA = {
 export type Categoria = 'urgencias' | 'especialidades' | 'estudios';
 export type NombreIcono = keyof typeof ICONOS;
 
+// relacionados: enlaces al pie de cada página de servicio.
+// llamarPrimero: en urgencias reales, el botón principal es Llamar, no WhatsApp.
+// foto: ruta en /public, o null mientras no haya foto.
 export const SERVICIOS = [
-  { slug: 'medicina-general', icono: 'estetoscopio', categoria: 'urgencias', h24: true },
-  { slug: 'rayos-x', icono: 'rayosX', categoria: 'estudios', h24: true },
-  { slug: 'laboratorio', icono: 'matraz', categoria: 'estudios', h24: false },
-  { slug: 'ultrasonido', icono: 'onda', categoria: 'estudios', h24: false },
-  { slug: 'pediatria', icono: 'nino', categoria: 'especialidades', h24: false },
-  { slug: 'ginecologia-y-obstetricia', icono: 'mujer', categoria: 'especialidades', h24: false },
-  { slug: 'nutricion', icono: 'manzana', categoria: 'especialidades', h24: false },
-  { slug: 'trauma-y-ortopedia', icono: 'hueso', categoria: 'especialidades', h24: false },
-  { slug: 'ambulancia', icono: 'ambulancia', categoria: 'urgencias', h24: true },
-] as const satisfies readonly { slug: string; icono: NombreIcono; categoria: Categoria; h24: boolean }[];
+  {
+    slug: 'medicina-general',
+    icono: 'estetoscopio',
+    categoria: 'urgencias',
+    h24: true,
+    relacionados: ['rayos-x', 'laboratorio', 'ambulancia'],
+    foto: null,
+  },
+  {
+    slug: 'rayos-x',
+    icono: 'rayosX',
+    categoria: 'estudios',
+    h24: true,
+    relacionados: ['trauma-y-ortopedia', 'medicina-general', 'ultrasonido'],
+    foto: null,
+  },
+  {
+    slug: 'laboratorio',
+    icono: 'matraz',
+    categoria: 'estudios',
+    h24: false,
+    relacionados: ['medicina-general', 'nutricion', 'ultrasonido'],
+    foto: null,
+  },
+  {
+    slug: 'ultrasonido',
+    icono: 'onda',
+    categoria: 'estudios',
+    h24: false,
+    relacionados: ['ginecologia-y-obstetricia', 'laboratorio', 'medicina-general'],
+    foto: null,
+  },
+  {
+    slug: 'pediatria',
+    icono: 'nino',
+    categoria: 'especialidades',
+    h24: false,
+    relacionados: ['medicina-general', 'laboratorio', 'nutricion'],
+    foto: null,
+  },
+  {
+    slug: 'ginecologia-y-obstetricia',
+    icono: 'mujer',
+    categoria: 'especialidades',
+    h24: false,
+    relacionados: ['ultrasonido', 'laboratorio', 'nutricion'],
+    foto: null,
+  },
+  {
+    slug: 'nutricion',
+    icono: 'manzana',
+    categoria: 'especialidades',
+    h24: false,
+    relacionados: ['laboratorio', 'medicina-general', 'ginecologia-y-obstetricia'],
+    foto: null,
+  },
+  {
+    slug: 'trauma-y-ortopedia',
+    icono: 'hueso',
+    categoria: 'especialidades',
+    h24: false,
+    relacionados: ['rayos-x', 'medicina-general', 'ambulancia'],
+    foto: null,
+  },
+  {
+    slug: 'ambulancia',
+    icono: 'ambulancia',
+    categoria: 'urgencias',
+    h24: true,
+    llamarPrimero: true,
+    relacionados: ['medicina-general', 'rayos-x', 'trauma-y-ortopedia'],
+    foto: null,
+  },
+] as const satisfies readonly {
+  slug: string;
+  icono: NombreIcono;
+  categoria: Categoria;
+  h24: boolean;
+  llamarPrimero?: boolean;
+  relacionados: readonly string[];
+  foto: string | null;
+}[];
 
 export type SlugServicio = (typeof SERVICIOS)[number]['slug'];
+export type Servicio = (typeof SERVICIOS)[number];
+
+export function servicioPorSlug(slug: string): Servicio | undefined {
+  return SERVICIOS.find((s) => s.slug === slug);
+}
 
 // sitio: enlace externo al perfil del médico, si lo tiene.
 export const ESPECIALISTAS = [
@@ -66,4 +146,6 @@ export const ICONOS = {
   ubicacion: 'M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12zM12 7.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5',
   reloj: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 7v5l3 2',
   menu: 'M4 7h16M4 12h16M4 17h16',
+  check: 'M5 12.5l4.5 4.5L19 7.5',
+  alerta: 'M12 3l9.5 17h-19zM12 10v4M12 17.5v.01',
 } as const;

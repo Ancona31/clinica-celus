@@ -36,6 +36,7 @@ export function Pie({ lang, t, enlaceWhatsApp }: Props) {
             <ul>
               <li><Link href={ruta(lang, '/servicios')}>{t.nav.servicios}</Link></li>
               <li><Link href={ruta(lang, '/especialistas')}>{t.nav.especialistas}</Link></li>
+              <li><Link href={ruta(lang, '/historias-de-exito')}>{t.nav.historias}</Link></li>
               <li><Link href={ruta(lang, '/contacto')}>{t.nav.contacto}</Link></li>
             </ul>
           </div>

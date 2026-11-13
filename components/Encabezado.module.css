@@ -180,7 +180,7 @@
 }
 
 /* ── Escritorio ─────────────────────────────────────────────────────── */
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   .barra:not([data-lang='myn']) .logo img {
     width: 185px;
   }

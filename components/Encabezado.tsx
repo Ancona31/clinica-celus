@@ -28,6 +28,7 @@ export function Encabezado({ lang, t, agendar, enlaceAgendar, mostrarIdioma }: P
     { href: ruta(lang, '/'), texto: t.inicio, exacto: true },
     { href: ruta(lang, '/servicios'), texto: t.servicios },
     { href: ruta(lang, '/especialistas'), texto: t.especialistas },
+    { href: ruta(lang, '/historias-de-exito'), texto: t.historias },
     { href: ruta(lang, '/contacto'), texto: t.contacto },
   ];
 

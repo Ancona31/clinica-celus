@@ -25,7 +25,7 @@ export const CLINICA = {
 // Fotos en /public/images (origen: página de Facebook de la clínica).
 // Los textos alternativos están en los diccionarios (fotos.*).
 export const FOTOS = {
-  fachada: { src: '/images/fachada.jpg', ancho: 1200, alto: 1600 },
+  fachada: { src: '/images/fachada.jpg', ancho: 896, alto: 1195 },
   equipo: { src: '/images/equipo-medico.jpg', ancho: 1060, alto: 795 },
   rayosX: { src: '/images/rayos-x.jpg', ancho: 600, alto: 450 },
   cirugia: { src: '/images/cirugia.jpg', ancho: 960, alto: 720 },
@@ -172,6 +172,13 @@ export const ESPECIALISTAS = [
 export const ESPECIALISTAS_INICIO = ['ancona', 'cruz', 'roman-herrera', 'osorio'] as const;
 
 export type IdEspecialista = (typeof ESPECIALISTAS)[number]['id'];
+
+// Historias de éxito. Cada una necesita la autorización por escrito del
+// paciente (o de su tutor). Los textos van en los diccionarios (historias.*);
+// la foto, si la hay, en /public/images/historias. Ejemplo:
+//   { id: 'rosa', servicio: 'trauma-y-ortopedia', foto: '/images/historias/rosa.jpg', ancho: 800, alto: 600 },
+export type Historia = { id: string; servicio: SlugServicio; foto: string | null; ancho?: number; alto?: number };
+export const HISTORIAS: readonly Historia[] = [];
 
 // Iconos de trazo en una cuadrícula de 24 × 24.
 export const ICONOS = {

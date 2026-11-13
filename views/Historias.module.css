@@ -1,0 +1,119 @@
+.lista {
+  display: grid;
+  gap: 16px;
+}
+
+.historia {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radio-l);
+  background: var(--superficie);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 20px;
+}
+
+.servicio {
+  align-self: flex-start;
+  color: var(--azul);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.titulo {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.relato {
+  color: var(--texto-2);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.cita {
+  padding-left: 16px;
+  border-left: 3px solid var(--azul);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.paciente {
+  color: var(--texto-3);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.vacio,
+.compartir {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+
+.compartir {
+  margin-top: 16px;
+}
+
+.ayuda {
+  color: var(--texto-2);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.boton {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.consentimiento {
+  max-width: 720px;
+  margin-top: 24px;
+  color: var(--texto-3);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 720px) {
+  .lista {
+    gap: 24px;
+  }
+
+  .historia:has(.foto) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+
+  .foto {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .texto {
+    padding: 32px;
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+  }
+
+  .compartir {
+    margin-top: 24px;
+  }
+}

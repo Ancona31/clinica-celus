@@ -13,6 +13,7 @@ export const es: Diccionario = {
     inicio: 'Inicio',
     servicios: 'Servicios',
     especialistas: 'Especialistas',
+    historias: 'Historias de éxito',
     contacto: 'Contacto',
     menu: 'Menú',
     idioma: 'Idioma',
@@ -49,7 +50,7 @@ export const es: Diccionario = {
     tituloResaltado: 'necesitas hoy?',
     subtitulo:
       'Consulta médica, especialistas, rayos X y laboratorio en un solo lugar, en el centro de Umán. Te atendemos a cualquier hora.',
-    fotoFachada: 'Fachada de Clínica Celus en el centro de Umán, de noche',
+    fotoFachada: 'Fachada de Clínica Celus en el centro de Umán',
     tarjeta24h: {
       titulo: '24 horas, 365 días',
       texto: 'Consulta general, rayos X y ambulancia',
@@ -419,6 +420,32 @@ export const es: Diccionario = {
     especialistas: 'Especialistas',
     generales: 'Medicina general y urgencias',
   },
+
+  paginaHistorias: {
+    meta: {
+      title: 'Historias de éxito · Clínica Celus en Umán',
+      description:
+        'Historias reales de pacientes atendidos en Clínica Celus, en Umán, Yucatán, compartidas con su autorización.',
+    },
+    eyebrow: 'Historias de éxito',
+    titulo: 'Pacientes que volvieron a estar bien',
+    intro: 'Historias reales de personas que atendimos en Clínica Celus, contadas con su permiso.',
+    atendidoEn: 'Atendido en {servicio}',
+    vacio: {
+      titulo: 'Muy pronto, las primeras historias',
+      texto: 'Estamos reuniendo las historias de nuestros pacientes. Vuelve pronto para conocerlas.',
+    },
+    compartir: {
+      titulo: '¿Te atendimos? Cuéntanos tu historia',
+      texto: 'Si tu experiencia en Clínica Celus puede ayudar a alguien más, escríbenos. Solo la publicamos con tu autorización.',
+      boton: 'Compartir mi historia',
+      whatsapp: 'Hola, fui paciente de Clínica Celus y me gustaría compartir mi historia.',
+    },
+    consentimiento:
+      'Cada historia se publica con la autorización del paciente. Los resultados dependen de cada persona y no sustituyen una valoración médica.',
+  },
+
+  historias: {},
 
   contacto: {
     meta: {

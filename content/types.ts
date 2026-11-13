@@ -21,6 +21,7 @@ export interface Diccionario {
     inicio: string;
     servicios: string;
     especialistas: string;
+    historias: string;
     contacto: string;
     menu: string;
     idioma: string;
@@ -124,6 +125,32 @@ export interface Diccionario {
     especialistas: string;
     generales: string;
   };
+
+  paginaHistorias: {
+    meta: Meta;
+    eyebrow: string;
+    titulo: string;
+    intro: string;
+    /** "Atendido en {servicio}". */
+    atendidoEn: string;
+    vacio: { titulo: string; texto: string };
+    compartir: { titulo: string; texto: string; boton: string; whatsapp: string };
+    consentimiento: string;
+  };
+
+  /** Historias de pacientes por id (ver HISTORIAS en datos.ts), solo con su autorización por escrito. */
+  historias: Record<
+    string,
+    {
+      /** Nombre como el paciente autorizó publicarlo (p. ej. "Rosa M., 54 años"). */
+      paciente: string;
+      titulo: string;
+      relato: string[];
+      /** Frase del paciente, si autorizó citarla. */
+      cita?: string;
+      fotoAlt?: string;
+    }
+  >;
 
   contacto: {
     meta: Meta;
